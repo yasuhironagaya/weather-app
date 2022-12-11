@@ -1,13 +1,21 @@
 // Form.tsx
 
+import { useState } from "react";
+
 const Form = () => {
-  return(
+  const [city, setCity] = useState("");
+  return (
     <form>
-      <input type="text" name="city" placeholder="都市名"/>
+      <input
+        type="text"
+        name="city"
+        placeholder="都市名"
+        onChange={(e) => setCity(e.target.value)}
+      />
+      {city}
       <button type="submit">Get Weather</button>
     </form>
-
   );
 };
 
-export default Form
+export default Form;
