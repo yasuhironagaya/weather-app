@@ -1,6 +1,6 @@
 // App.tsx
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Results from "./components/Results";
@@ -24,7 +24,7 @@ function App() {
     icon: "",
   });
 
-  const getWeather = (e: any) => {
+  const getWeather = (e: React.FocusEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetch(
       `https://api.weatherapi.com/v1/current.json?key=c2fbbeb20a584e528b071710221112&q=${city}&aqi=no`
@@ -42,10 +42,12 @@ function App() {
   };
 
   return (
-    <div className="test">
-      <Title />
-      <Form setCity={setCity} getWeather={getWeather} />
-      <Results results={results} />
+    <div className="wrapper">
+      <div className="container">
+        <Title />
+        <Form setCity={setCity} getWeather={getWeather} />
+        <Results results={results} />
+      </div>
     </div>
   );
 }
